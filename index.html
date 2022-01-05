@@ -77,6 +77,9 @@
                         <li class="nav-item">
                             <a class="nav-link page-scroll" href="#interestcalculator">Interest calculator <span class="sr-only">(current)</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#unitconvertor">Unit convertor <span class="sr-only">(current)</span></a>
+                        </li>
                 </div>
               
         </div> <!-- end of container -->
@@ -442,7 +445,7 @@
                                <span> + </span>
                               </div>
                               <div class="form-group">
-                               <input type="text" name="" class="form-control text-center" placeholder=" Love Name" id="lname">
+                               <input type="text" name="" class="form-control text-center w-60 m-auto" placeholder=" Love Name" id="lname">
                               </div>
                              </form> <br>
                               <div class="w-70 m-auto">
@@ -506,7 +509,91 @@
                             .main td{padding:0 8px;vertical-align:middle;border:0}
                             .main input{width:100%;border:1px solid #ccc;margin:2px 0;padding:0 2%;height:22px;text-align:right}.ac{text-align:center}.b{font-weight:bold}
                             .main select{width:100%;border:1px solid #ccc;margin:2px 0;background:#fff;height:22px}.w50{width:50%}.main button{width:100%;font-weight:bold;margin:3px 0}</style>
+                            
+
+
+                            
+                                
+</div>
+<div id = "unitconvertor" class ="jumbotron">
+     <div id=cover>
+    <div id=outer><div class='ac b'>Unit calculator</div>
+<form name="lengthCon">
+	
+		<p class="Value">From</p> 
+			<select class="movement" name=fromUnit onChange="convertUnit()">
+			<option> meters
+			<option> kilometers
+			<option> miles
+      <option> feet 
+      <option> yards
+			</select>
+		
+		 <p class="Options">To</p>
+		<p>
+			<select class="moves" name=toUnit onChange="convertUnit()">
+			<option> meters
+			<option> kilometers
+			<option> miles
+      <option> feet
+      <option> yards
+			</select>
+  </p>
+	
+		<p colspan="4"><div id="formula">meters = 1 meters</div></p>
+
+		<p class="Walk">Enter </p>
+		<p><input class="around" type="text" name="fromValue" value="1" size="5" maxlength="10"></p>
+		<p><input class="yah"type=button value="Convert" onClick="convertUnit()"></p>
+		<p><span id="toValue"> 1</span></p>
+</div>
+</form>
+<style>#outer{width:90%;max-width:600px;background:rgb(255, 255, 255);margin:0 auto}
+    #cover{border:2px solid #111;padding:15px 0}
+    .main{table-layout:fixed;width:94%;border:0;border-collapse:collapse;margin:0 auto}
+    .main td{padding:0 8px;vertical-align:middle;border:0}
+    .main input{width:100%;border:1px solid #ccc;margin:2px 0;padding:0 2%;height:22px;text-align:right}.ac{text-align:center}.b{font-weight:bold}
+    .main select{width:100%;border:1px solid #ccc;margin:2px 0;background:#fff;height:22px}.w50{width:50%}.main button{width:100%;font-weight:bold;margin:3px 0}</style>
+    
+<script>let factors1 = new Array(1, 0.001, 0.000621,3.28084,1.09361);
+    let factors2 = new Array(1000, 1, 0.621,3280.84,1093.61);
+    let factors3 = new Array(1609.34, 1.60934, 1,5280,1760);
+    let factors4 = new Array(0.3048,0.0003048,0.000189394,1,0.333333);
+    let factors5 = new Array(0.9144,0.0009144,0.000568182,3,1);
+    let factors = new Array(factors1,factors2,factors3,factors4,factors5);
+    
+    function convertUnit()
+    {
+      // Grab the correct conversion factor from our arrays
+      fromIndex = document.lengthCon.fromUnit.selectedIndex;
+      toIndex = document.lengthCon.toUnit.selectedIndex;
+      factor = factors[fromIndex][toIndex];
+      // Create the text that we want to write on the middle line
+      fromUnitText = document.lengthCon.fromUnit.options[document.lengthCon.fromUnit.selectedIndex].text;
+      toUnitText = document.lengthCon.toUnit.options[document.lengthCon.toUnit.selectedIndex].text;
+      document.getElementById("formula").innerHTML = fromUnitText + ' = ' + factor + ' ' + toUnitText;
+      // Check the input box to make sure we have a valid number
+      if(isNaN(document.lengthCon.fromValue.value))
+        document.getElementById("toValue").innerHTML = "Not a valid number.";
+      // Output the converted number...last number on last line
+      else {
+        document.getElementById("toValue").innerHTML = factor * document.lengthCon.fromValue.value;
+      }
+    }</script>
+    
+</div>
+
+
+
+
+
+
+
+
+
+                            
                     <p class="p-large">Did u like this website???</p>
+            
                 <P></P>
  <p></p>
                 <p></p>  <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>Yes</a>
