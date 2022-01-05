@@ -80,6 +80,9 @@
                         <li class="nav-item">
                             <a class="nav-link page-scroll" href="#unitconvertor">Unit convertor <span class="sr-only">(current)</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#timezone">Time zone convertor <span class="sr-only">(current)</span></a>
+                        </li>
                 </div>
               
         </div> <!-- end of container -->
@@ -582,13 +585,140 @@
     }</script>
     
 </div>
+<div id ="timezone"></div>
+<div>
+
+  
+    <div id=cover>
+        <div id=outer><div class='ac b'>Time zone calculator</div>
+<body onload="updateTimeZone()">
+
+    <div id="ConversionResultsDIV"></div> 
+    
+    <form name="form1"> 
+      <select size="5" name="lstCity" onchange="updateTimeZone();"> 
+      <option value="60" selected>Berlin 
+      <option value="330">Bombay 
+      <option value="0">London 
+      <option value="180">Moscow 
+      <option value="-300">New York (EST) 
+      <option value="60">Paris 
+      <option value="-480">San Francisco (PST) 
+      <option value="600">Sydney 
+      </select> 
+      
+      <p> Time zone calculator...</p>
+        <input type="checkbox" name="chkDaylightSaving"    onclick="return chkDaylightSaving_onclick()"> 
+      </p> 
+    </form>
+    <div class="deco-white-circle-1">
+        <img src="images/decorative-white-circle.svg" alt="alternative">
+    </div> <!-- end of deco-white-circle-1 -->
+    <div class="deco-white-circle-2">
+        <img src="images/decorative-white-circle.svg" alt="alternative">
+    </div> <!-- end of deco-white-circle-2 -->
+    <div class="deco-blue-circle">
+        <img src="images/decorative-blue-circle.svg" alt="alternative">
+    </div> <!-- end of deco-blue-circle -->
+    
+    <div class="deco-yellow-circle">
+        <img src="images/decorative-yellow-circle.svg" alt="alternative">
+    </div> <!-- end of deco-yellow-circle -->
+    <div class="deco-green-diamond">
+        <img src="images/decorative-green-diamond.svg" alt="alternative">
+    </div> <!-- end of deco-yellow-circle -->
+    </body>
+<script>var timeDiff;
+    var selectedCity;
+    var daylightSavingsAdjust = 0;
+    
+    function updateTimeZone(){
+      var lstCity = document.form1.lstCity;
+      timeDiff = lstCity.options[lstCity.selectedIndex].value;
+      selectedCity = lstCity.options[lstCity.selectedIndex].text;
+      updateTime();
+    }
+    
+    function getTimeString(dateObject){
+      var timeString;
+      var hours = dateObject.getHours();
+      if(hours < 10){
+        hours = "0" + hours;
+      }
+      
+      var minutes = dateObject.getMinutes();
+      if(minutes<10){
+        minutes = "0" + minutes;
+      }
+      
+      var seconds = dateObject.getSeconds();
+      if(seconds<10){
+        seconds ="0" + seconds;
+      }
+      
+      timeString = hours + ":" + minutes + ":" + seconds;
+      return timeString;
+    }
+      
+    function updateTime(){
+      var nowTime = new Date();
+      var resultsText = "<p>Local Time is " + getTimeString(nowTime) + "</p>";
+      
+      nowTime.setMinutes(nowTime.getMinutes() + nowTime.getTimezoneOffset() + parseInt(timeDiff) + daylightSavingsAdjust);
+      
+      resultsText += "<p>" + selectedCity + " time is "+ getTimeString(nowTime) 
+      + "</p>";
+      
+      document.getElementById("ConversionResultsDIV").innerHTML = resultsText;
+    }
+    
+    function chkDaylightSaving_onclick(){
+      if(document.form1.chkDaylightSaving.checked){
+        daylightSavingsAdjust = 60;
+      }
+      
+      else{
+        daylightSavingsAdjust = 0;
+      }
+      
+      updateTime(); 
+    }</script>
+    <div class="deco-white-circle-1">
+            <img src="images/decorative-white-circle.svg" alt="alternative">
+        </div> <!-- end of deco-white-circle-1 -->
+        <div class="deco-white-circle-2">
+            <img src="images/decorative-white-circle.svg" alt="alternative">
+        </div> <!-- end of deco-white-circle-2 -->
+        <div class="deco-blue-circle">
+            <img src="images/decorative-blue-circle.svg" alt="alternative">
+        </div> <!-- end of deco-blue-circle -->
+        
+        <div class="deco-yellow-circle">
+            <img src="images/decorative-yellow-circle.svg" alt="alternative">
+        </div> <!-- end of deco-yellow-circle -->
+        <div class="deco-green-diamond">
+            <img src="images/decorative-green-diamond.svg" alt="alternative">
+        </div> <!-- end of deco-yellow-circle -->
+    </div>
+</div>
 
 
+<div class="deco-white-circle-1">
+    <img src="images/decorative-white-circle.svg" alt="alternative">
+</div> <!-- end of deco-white-circle-1 -->
+<div class="deco-white-circle-2">
+    <img src="images/decorative-white-circle.svg" alt="alternative">
+</div> <!-- end of deco-white-circle-2 -->
+<div class="deco-blue-circle">
+    <img src="images/decorative-blue-circle.svg" alt="alternative">
+</div> <!-- end of deco-blue-circle -->
 
-
-
-
-
+<div class="deco-yellow-circle">
+    <img src="images/decorative-yellow-circle.svg" alt="alternative">
+</div> <!-- end of deco-yellow-circle -->
+<div class="deco-green-diamond">
+    <img src="images/decorative-green-diamond.svg" alt="alternative">
+</div> <!-- end of deco-yellow-circle -->
 
 
                             
