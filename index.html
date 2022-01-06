@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=1280, initial-scale=1, shrink-to-fit=no">
     
     <script>var siteWidth = 1280;
         var scale = screen.width /siteWidth;
@@ -529,7 +529,7 @@
 </div>
 <div id = "unitconvertor" class ="jumbotron">
      <div id=cover>
-    <div id=outer><div class='ac b'>Unit calculator</div>
+    <div id=inner><div class='ac b'>Unit calculator</div>
 <form name="lengthCon">
 	
 		<p class="Value">From</p> 
@@ -558,7 +558,9 @@
 		<p><input class="around" type="text" name="fromValue" value="1" size="5" maxlength="10"></p>
 		<p><input class="yah"type=button value="Convert" onClick="convertUnit()"></p>
 		<p><span id="toValue"> 1</span></p>
+        <br>
 </div>
+
 </form>
 <style>#outer{width:90%;max-width:600px;background:rgb(255, 255, 255);margin:0 auto}
     #cover{border:2px solid #111;padding:15px 0}
@@ -591,9 +593,18 @@
       else {
         document.getElementById("toValue").innerHTML = factor * document.lengthCon.fromValue.value;
       }
+      extra &nbsp;&nbsp; space
     }</script>
-    
+    <br><Br>
 </div>
+
+<br>
+<br>
+<br>
+
+
+
+
 <div id ="timezone"></div>
 <div>
 
